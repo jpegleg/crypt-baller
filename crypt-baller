@@ -4,6 +4,7 @@ dir=$1
 rec=$2
 
 for x in $(ls $dir/*.tgz); do
- gpg -e --armor --batch --yes -r $rec $x
+ gpg -e --armor --always-trust --batch --yes -r $rec $x
+ cp /dev/null $x
  rm -f $x
 done
