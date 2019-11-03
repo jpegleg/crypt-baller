@@ -1,8 +1,8 @@
 # crypt-baller
 Encrypt *.tgz in a given directory with a pgp public key in an automated fashion.
 
-The software contained here does not contain any cryptographic software, just wrapper script automation around
-other software not included here.
+The software does not contain any cryptographic software, just wrapper script automation around
+other software not included here that does the actual encryption, as in gpg.
 
 Example:
 
