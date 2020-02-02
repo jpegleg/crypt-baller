@@ -8,7 +8,7 @@ for x in $(ls $dir/*.tgz); do
  # Wipe out your copy of key.bin
 shredd=$(which shred)
 if [ $shredd -z ]; then
- cp /dev/null $x
+  cp /dev/null $x
 else
   shred -v -n 25 -u -z $x
 fi
