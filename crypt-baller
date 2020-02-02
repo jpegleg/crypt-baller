@@ -5,6 +5,12 @@ rec=$2
 
 for x in $(ls $dir/*.tgz); do
  gpg -e --armor --always-trust --batch --yes -r $rec $x
+ # Wipe out your copy of key.bin
+shredd=$(which shred)
+if [ $shredd -z ]; then
  cp /dev/null $x
- rm -f $x
+else
+  shred -v -n 25 -u -z $x
+fi
+ rm -f $x 2>/dev/null
 done
