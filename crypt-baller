@@ -2,17 +2,17 @@
 
 dir=$1
 rec=$2
-
-for x in $(ls $dir/*.tgz); do
- gpg -e --armor --always-trust --batch --yes -r $rec $x
- # Wipe out your copy of key.bin
 shredd=$(which shred)
-if [ $shredd -z ]; then
-  openssl rand -base64 900000 > $x
-  echo 0 > $x
-  cp /dev/null $x
-else
-  shred -v -n 25 -u -z $x
-fi
- rm -f $x 2>/dev/null
+
+for file in $(ls $dir/*.tgz); do
+  gpg -e --armor --always-trust --batch --yes -r $rec $file
+  # Wipe out your copy of key.bin  
+  if [ -z "$shredd" ]; then
+    openssl rand -base64 900000 > $file
+    echo 0 > $file
+    cp /dev/null $file
+  else
+    shred -v -n 25 -u -z $file
+  fi
+  rm -f $file 2>/dev/null
 done
