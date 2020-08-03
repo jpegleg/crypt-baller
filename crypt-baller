@@ -5,7 +5,7 @@ rec=$2
 shredd=$(which shred)
 
 for file in $(ls $dir/*.tgz); do
-  gpg -e --armor --always-trust --batch --yes -r $rec $file
+  gpg -e --cipher=aes256 --armor --always-trust --batch --yes -r $rec $file
   if [ -z "$shredd" ]; then
     openssl rand -base64 900000 > $file
     echo 0 > $file
