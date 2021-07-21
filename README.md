@@ -26,3 +26,7 @@ Example tarring action:
 before the crypt-baller crontab above encrypts it )
 
 tar czvf /mnt/encrypt-me/$(hostname).logs.$(date +%Y%m%d-%H).tgz /var/log/
+
+
+
+Also see https://github.com/jpegleg/double-crypt
